@@ -1,0 +1,2707 @@
+{
+  "name": "Client Onboarding Project(Major Project)",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "14gJw-GT6u3IBmR1qHXFJrTmw6lqlb39O6ewchN268dI",
+          "mode": "list",
+          "cachedResultName": "n8n major project",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14gJw-GT6u3IBmR1qHXFJrTmw6lqlb39O6ewchN268dI/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1808610529,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/14gJw-GT6u3IBmR1qHXFJrTmw6lqlb39O6ewchN268dI/edit#gid=1808610529"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        -240
+      ],
+      "id": "90285e74-8c0d-4458-af19-64887427c78d",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "EgJQeltgh2yePXGv",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9c568f43-c361-4930-a606-69235283e8c7",
+              "name": "Client Name",
+              "value": "={{ $json['Client Name'] }}",
+              "type": "string"
+            },
+            {
+              "id": "e82b8261-592d-4851-b758-4ff83fe68193",
+              "name": "Client Email",
+              "value": "={{ $json['Client Email'] }}",
+              "type": "string"
+            },
+            {
+              "id": "be23d42c-530c-4dfa-bfb6-624e04797c3d",
+              "name": "Company",
+              "value": "={{ $json.Company }}",
+              "type": "string"
+            },
+            {
+              "id": "88e1b14b-cad0-42ed-8658-0623885fffaa",
+              "name": "Service Needed",
+              "value": "={{ $json['Service Needed'] }}",
+              "type": "string"
+            },
+            {
+              "id": "11b6f3a3-ab90-475a-9bbd-b03c5a166d7b",
+              "name": "Phone ",
+              "value": "={{ $json['Phone '] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -400,
+        -240
+      ],
+      "id": "bb45c5fa-2866-4686-918f-db326333c6a3",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -32,
+        -240
+      ],
+      "id": "875f2928-0b4c-480d-a87e-3c114c54d577",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $input.first().json[\"Client Name\"] }}",
+            "Email": "={{ $json['Client Email'] }}",
+            "Company": "={{ $json.Company }}",
+            "Service Needed": "={{ $json['Service Needed'] }}",
+            "Phone ": "={{ $json.Phone }}{{ $json['Phone '] }}",
+            "Client Score": 0,
+            "Client Status": "New"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Service Needed",
+              "displayName": "Service Needed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone ",
+              "displayName": "Phone ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Client Score",
+              "displayName": "Client Score",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Client Status",
+              "displayName": "Client Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Payment Pending",
+                  "value": "Payment Pending"
+                },
+                {
+                  "name": "Follow-up Needed",
+                  "value": "Follow-up Needed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        -224
+      ],
+      "id": "e8f37324-694d-4acb-ade7-7167f1c20e54",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Update record').item.json.fields.Email }}",
+        "subject": "=Thanks for contacting us, {{ $('Update record').item.json.fields.Name }}!",
+        "message": "=Hi <b>{{ $('Update record').item.json.fields.Name }}</b>,<br><br>  Thank you for reaching out to us at <b>{{ $('Update record').item.json.fields.Company }}</b> regarding <b>{{ $('Update record').item.json.fields['Service Needed'] }}</b>.<br><br>  Our team will contact you shortly to get started on your request.<br><br>  If you have any questions, feel free to reply to this email.<br><br>  Best regards,<br> Client Onboarding Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        2128,
+        48
+      ],
+      "id": "af9b936c-fd24-45b7-8c56-4e0d696c0d69",
+      "name": "Send a message",
+      "webhookId": "5761ab48-3dd4-4594-a46c-3f56bd66c790",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "uAw3F02xD5TYZnhB",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json.fields['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json.fields.Name }},\n\nThanks for contacting us — we’re excited to help you! 🙌\n\nTo move things forward, could you please reply to this email with your WhatsApp number?\n\nIt’ll help us connect with you faster and complete your onboarding.\n\nLooking forward to your reply!\n\n— Team [Your Name]\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1984,
+        48
+      ],
+      "id": "f8daf197-69cb-47bf-a888-c5ebc00a155a",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "q": "subject:(inquiry OR contact OR client)"
+        }
+      },
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        -48
+      ],
+      "id": "0e443bce-fe31-4e7b-8d39-421044644bda",
+      "name": "Gmail Trigger1",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "uAw3F02xD5TYZnhB",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Extract the following information from this email:\n- Name\n- Email\n- Company\n- Service Needed\n- Phone\n\nEmail Body:\n{{ $json.snippet }}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -496,
+        -48
+      ],
+      "id": "74b5e4d9-8146-4d14-8a47-31f834d0cee3",
+      "name": "Message a model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "oOshNOHDVmAZZPwK",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93688a9c-366e-4b55-95df-5e86ec1e2665",
+              "name": "Client Name",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Name:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "812c9f48-8a56-45d0-b445-622fe5ec8cab",
+              "name": "Client Email",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Email:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "6d40a400-2e4c-4ea1-8355-7f22e55fe73d",
+              "name": "Company",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Company:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "9c51c5a6-c25d-4f37-b9fa-96c934aa1694",
+              "name": "Service Needed",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Service Needed:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "6540c722-8780-4f5b-9076-e9b8d50fc431",
+              "name": "Phone",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Phone:\\s*([\\+\\d\\s\\-]+)/)[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -48
+      ],
+      "id": "a6667381-fe81-4109-b801-89b444b64505",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Client Qualification Scoring\n\nDetails:\nName: {{ $json.fields.Name }}\nEmail: {{ $json.fields.Email }}\nCompany: {{ $json.fields.Company }}\nService Needed: {{ $json.fields['Service Needed'] }}\nPhone: {{ $json.fields['Phone '] }}\n\nGive me:\n1. A score from 1 to 10 on how valuable or likely this client is to convert.\n2. One line reason for this score.\n\nRespond in this JSON format:\n{\n  \"score\": number,\n  \"reason\": \"string\"\n}\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        496,
+        -32
+      ],
+      "id": "1b8990e1-c693-46e1-b2f5-b62b2bf5e409",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "oOshNOHDVmAZZPwK",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Assuming only one item is passed\nconst item = items[0];\n\n// Parse OpenAI response\nconst response = JSON.parse(item.json.message.content);\n\n// Return the combined object\nreturn [\n  {\n    json: {\n      // previous client details\n      airtableId: item.json.airtableId || item.json.id, \n      name: item.json[\"Client Name\"],\n      email: item.json[\"Client Email\"],\n      company: item.json[\"Company\"],\n      service: item.json[\"Service Needed\"],\n      phone: item.json[\"Phone\"],\n      \n\n      // AI scoring\n      id: response.id,\n      score: response.score,\n      reason: response.reason\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        816,
+        -32
+      ],
+      "id": "9a439bd2-7785-4cee-b781-e5c6f441493a",
+      "name": "Code"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Client Score": "={{ $('Code').item.json.score }}",
+            "id": "={{ $('Create a record').item.json.id }}",
+            "Client Status": "={{ $json['Client Status'] }}",
+            "Score Reason": "={{ $('Code').item.json.reason }}"
+          },
+          "matchingColumns": [
+            "Client Score",
+            "id",
+            "Client Status"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Service Needed",
+              "displayName": "Service Needed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone ",
+              "displayName": "Phone ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Client Score",
+              "displayName": "Client Score",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Score Reason",
+              "displayName": "Score Reason",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Client Status",
+              "displayName": "Client Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Payment Pending",
+                  "value": "Payment Pending"
+                },
+                {
+                  "name": "Follow-up Needed",
+                  "value": "Follow-up Needed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1840,
+        48
+      ],
+      "id": "3beb6c88-9723-488b-90f2-74024bd6b6df",
+      "name": "Update record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "id": "={{ $('Update record').item.json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2272,
+        48
+      ],
+      "id": "8ea62ab8-38e0-4a7f-a468-5d33b06f7076",
+      "name": "Get a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json['Client Score'] }}",
+                    "rightValue": 8,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    },
+                    "id": "370411a8-0b09-4e89-a7f1-3a0a28e0b66a"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "High Priority"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8b6ad815-c0ff-4934-be22-f49c828c9e5c",
+                    "leftValue": "={{ $json['Client Score'] }}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Moderate Priority"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "d4476e9e-01e7-4354-b138-16edbcf0b1d0",
+                    "leftValue": "={{ $json['Client Score'] }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Low Priority"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2512,
+        272
+      ],
+      "id": "270116f0-5ab8-4432-8e05-845032fbf7a4",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=📢 New High-Priority Client Assigned\n\nClient Name: {{ $json.Name }}\nScore: {{ $json['Client Score'] }}\nService Requested: {{ $json['Service Needed'] }}\nAssigned To: Shubham (Senior Sales Executive)\n\nPlease reach out to the client at the earliest convenience to ensure a swift and personalized onboarding experience."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        128
+      ],
+      "id": "76086fdb-cefe-443b-ad8b-52388a9dc2c6",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=📢 New Client Assigned (Moderate Priority)\n\nClient Name: {{ $json.Name }}\nScore: {{ $json['Client Score'] }}\nService Requested: {{ $json['Service Needed'] }}\nAssigned To: Ayush (Junior Sales Executive)\n\nPlease follow up with the client within the next 24–48 hours and assist them with the onboarding process."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        288
+      ],
+      "id": "66384676-286e-4a1a-9ad0-8bc29afc34e1",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=📢 New Client Assigned (Low Priority)\n\nClient Name: {{ $json.Name }}\nScore: {{ $json['Client Score'] }}\nService Requested: {{ $json['Service Needed'] }}\nAssigned To: Neha (Sales Assistant)\n\nThis lead is low priority. Please add them to the nurturing list and follow up as needed based on engagement."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2800,
+        448
+      ],
+      "id": "4362819d-886f-410e-b963-f9172af77c3e",
+      "name": "HTTP Request3"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ],
+        "options": {}
+      },
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        -624,
+        -400
+      ],
+      "id": "f307414d-ed82-48d1-9ef2-d02b403371fe",
+      "name": "WhatsApp Trigger",
+      "webhookId": "57e1dc4f-f4d3-453f-a7be-6663b76d2dfd",
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "YeiD00g4vl9jTxnP",
+          "name": "WhatsApp OAuth account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-3.5-turbo",
+          "mode": "list",
+          "cachedResultName": "GPT-3.5-TURBO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Extract the following information from this text:\n- Name\n- Email\n- Company\n- Service Needed\n- Phone\n\ntext Body:\n{{ $json.messages[0].text.body }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -496,
+        -400
+      ],
+      "id": "8946da11-2da6-4622-9d16-88124d4ed9df",
+      "name": "Message a model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "oOshNOHDVmAZZPwK",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93688a9c-366e-4b55-95df-5e86ec1e2665",
+              "name": "Client Name",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Name:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "812c9f48-8a56-45d0-b445-622fe5ec8cab",
+              "name": "Client Email",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Email:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "6d40a400-2e4c-4ea1-8355-7f22e55fe73d",
+              "name": "Company",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Company:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "9c51c5a6-c25d-4f37-b9fa-96c934aa1694",
+              "name": "Service Needed",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Service Needed:\\s*(.*)/)[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "6540c722-8780-4f5b-9076-e9b8d50fc431",
+              "name": "Phone",
+              "value": "={{ $json[\"message\"][\"content\"].match(/Phone:\\s*([\\+\\d\\s\\-]+)/)[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -192,
+        -400
+      ],
+      "id": "5b1ce30d-42b8-4bf1-a51a-1f15d1e1a04c",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.score }}",
+                    "rightValue": 8,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    },
+                    "id": "e9d99731-8e9a-433c-b28e-b3b51f5c7ca3"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "In Progress"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a7593e7e-f9c6-4b08-9555-e0abf2d8996e",
+                    "leftValue": "={{ $json.score}}",
+                    "rightValue": 5,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Follow-up Needed"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "05f73b26-9fe2-48f1-9cb8-0548af0bcc71",
+                    "leftValue": "={{ $json.score }}",
+                    "rightValue": 0,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "New"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1072,
+        320
+      ],
+      "id": "946207df-188c-4b6e-acb9-6d749ba8cd5c",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "27b62061-e41b-40cd-bcda-e9fb214f3302",
+              "name": "Client Status",
+              "value": "In Progress",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1312,
+        144
+      ],
+      "id": "51537887-7009-4cf0-a9cf-412dd7b054f7",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9a08df93-a458-453f-ad98-1e9276ff9ecf",
+              "name": "Client Status",
+              "value": "Follow-up Needed",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1312,
+        336
+      ],
+      "id": "4c9bebd1-0a44-4e4c-a4ea-25970f4ebdc3",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9a08df93-a458-453f-ad98-1e9276ff9ecf",
+              "name": "Client Status",
+              "value": "New",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1312,
+        512
+      ],
+      "id": "e4a5327f-c7af-4bda-92c2-70ddda6c5c66",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1552,
+        320
+      ],
+      "id": "3ad3ad76-04a2-4ea5-a5df-a91a51531f1b",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3072,
+        272
+      ],
+      "id": "485449e4-6eba-4a56-9f75-942ec471cab6",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.razorpay.com/v1/payment_links",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"amount\": 50000,\n  \"currency\": \"INR\",\n  \"accept_partial\": false,\n  \"description\": \"Payment for service: {{ $('Get a record').item.json['Service Needed'] }}\",\n  \"customer\": {\n    \"name\": \"{{ $('Get a record').item.json.Name }}\",\n    \"contact\": \"{{ $('Get a record').item.json['Phone '] }}\",\n    \"email\": \"{{ $('Get a record').item.json.Email }}\"\n  },\n  \"notify\": {\n    \"sms\": false,\n    \"email\": true\n  },\n  \"reminder_enable\": true\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3408,
+        208
+      ],
+      "id": "07b438f2-641f-4539-8734-ed085f9edb4a",
+      "name": "HTTP Request4",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "2Fr8SuyviUc0vQi0",
+          "name": "Razorpay"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json.fields['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json.fields.Name }}, 👋\n\nPlease complete your onboarding by paying here:\n{{ $('HTTP Request4').item.json.short_url }}\n\nLet us know if you need any help. – Team\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3744,
+        208
+      ],
+      "id": "94dde28f-901d-46a2-a794-4909026ac68a",
+      "name": "Razorpay payment"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "razorpay-payment-update",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -688,
+        608
+      ],
+      "id": "58ae19b4-9332-4c75-aca8-03f44639876f",
+      "name": "Razorpay Webhook",
+      "webhookId": "92b53e91-6d5f-4999-a3c8-33ba78ed4fff"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "595a574b-db73-4dd5-a199-dc787883fe64",
+              "name": "email",
+              "value": "={{ $json.body.payload.payment_link.entity.customer.email }}",
+              "type": "string"
+            },
+            {
+              "id": "105676e8-75a5-4305-828a-80258eeb8526",
+              "name": "contact",
+              "value": "={{ $json.body.payload.payment_link.entity.customer.contact }}",
+              "type": "string"
+            },
+            {
+              "id": "e60e9b4f-0b7e-4c3b-8884-d3db735a65fd",
+              "name": "status",
+              "value": "={{ $json.body.payload.payment_link.entity.reminders.status }}",
+              "type": "string"
+            },
+            {
+              "id": "6aba964c-8542-4200-b002-84d2f5729ae6",
+              "name": "payment_link_id",
+              "value": "={{ $json.body.payload.payment_link.entity.id }}",
+              "type": "string"
+            },
+            {
+              "id": "b5ec21ac-1a54-469a-86f9-ffb1c6539935",
+              "name": "name",
+              "value": "={{ $json.body.payload.payment_link.entity.customer.name }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -528,
+        608
+      ],
+      "id": "99f68eec-1591-49b3-a3c1-77663d8df4f8",
+      "name": "Extract Payment Info"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "filterByFormula": "={Payment Link ID} = \"{{ $json.payment_link_id }}\"\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -384,
+        608
+      ],
+      "id": "8197c55c-4796-43e5-96a0-2667e7a59fce",
+      "name": "Search records",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "id": "={{ $json.id }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -240,
+        608
+      ],
+      "id": "ec935d9f-dd64-45b7-8a11-002e3bc1803d",
+      "name": "Get a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $json.id }}",
+            "Client Status": "Completed",
+            "Currency": "={{ $('Razorpay Webhook').item.json.body.payload.payment_link.entity.currency }}",
+            "Amount Paid": "={{ $('Razorpay Webhook').item.json.body.payload.payment_link.entity.amount_paid }}",
+            "Payment Link ID": "={{ $json['Payment Link ID'] }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Service Needed",
+              "displayName": "Service Needed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone ",
+              "displayName": "Phone ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Client Score",
+              "displayName": "Client Score",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Score Reason",
+              "displayName": "Score Reason",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Client Status",
+              "displayName": "Client Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Payment Pending",
+                  "value": "Payment Pending"
+                },
+                {
+                  "name": "Follow-up Needed",
+                  "value": "Follow-up Needed"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Payment Link ID",
+              "displayName": "Payment Link ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Currency",
+              "displayName": "Currency",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Amount Paid",
+              "displayName": "Amount Paid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        608
+      ],
+      "id": "0567e493-7520-4265-915c-8dc1326d7625",
+      "name": "Update record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $('Razorpay Webhook').item.json.body.payload.payment.entity.contact }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json.fields.Name }}, 👋\n\nThanks for your payment! 🎉  \nYour onboarding is now confirmed ✅\n\nYou can access details visiting our website: \nhttps://client-onboard-status.lovable.app\n\nWe'll reach out soon with next steps.\n\n– Team\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        48,
+        608
+      ],
+      "id": "8bde313a-dc03-402b-8c92-1264d5063013",
+      "name": "HTTP Request5"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcnnCN9e6Js8EHv",
+          "mode": "list",
+          "cachedResultName": "Clients",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tblcnnCN9e6Js8EHv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "id": "={{ $('Get a record').item.json.id }}",
+            "Payment Link ID": "={{ $json.id }}"
+          },
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": false
+            },
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Company",
+              "displayName": "Company",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Service Needed",
+              "displayName": "Service Needed",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Phone ",
+              "displayName": "Phone ",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Client Score",
+              "displayName": "Client Score",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Score Reason",
+              "displayName": "Score Reason",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Client Status",
+              "displayName": "Client Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "New",
+                  "value": "New"
+                },
+                {
+                  "name": "In Progress",
+                  "value": "In Progress"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Payment Pending",
+                  "value": "Payment Pending"
+                },
+                {
+                  "name": "Follow-up Needed",
+                  "value": "Follow-up Needed"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Payment Link ID",
+              "displayName": "Payment Link ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Currency",
+              "displayName": "Currency",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Amount Paid",
+              "displayName": "Amount Paid",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        3568,
+        208
+      ],
+      "id": "cebb1f6c-7c9b-4f10-9345-b6240a81ad6f",
+      "name": "Update record2",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json.fields['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json.fields.Name }}, 👋\n\nThanks for reaching out!\n\nTo proceed with your onboarding, please upload all the required documents using the link below:\n\n📎 Upload Documents: https://docs.google.com/forms/d/e/1FAIpQLSevoohsbEIZLuYWOgmxMiNpr9IwhKoAMKRBBEOtz3cAvq_PuQ/viewform\n\nOnce you’ve submitted the form, we’ll review everything and get back to you shortly.\n\nLet us know if you have any questions.\n\n— Team \n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        496,
+        -640
+      ],
+      "id": "fd58fded-530e-4064-a2c7-fadc66148549",
+      "name": "HTTP Request6"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "13z2CEQNG4MQw4AYrMr7gB8NAnvFNC3bJpYlJZj38nqE",
+          "mode": "list",
+          "cachedResultName": "Client Documents",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13z2CEQNG4MQw4AYrMr7gB8NAnvFNC3bJpYlJZj38nqE/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1674839055,
+          "mode": "list",
+          "cachedResultName": "Form Responses 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/13z2CEQNG4MQw4AYrMr7gB8NAnvFNC3bJpYlJZj38nqE/edit#gid=1674839055"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        768,
+        -656
+      ],
+      "id": "7ac4a564-9e87-4117-bb42-9d47cdfc71d1",
+      "name": "Google Sheets Trigger1",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "EgJQeltgh2yePXGv",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apppEUY6NucKorNar",
+          "mode": "list",
+          "cachedResultName": "Client Onboarding",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbllzMgrVTaoNVIGv",
+          "mode": "list",
+          "cachedResultName": "Client Documents",
+          "cachedResultUrl": "https://airtable.com/apppEUY6NucKorNar/tbllzMgrVTaoNVIGv"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "Email": "={{ $json.Email }}",
+            "Id Proof": "={{ $json['Id Proof'] }}",
+            "Phone": "={{ $json['Phone '] }}",
+            "Pan Card/Buisness Registration": "={{ $json['Upload PAN Card or Business Registration'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Id Proof",
+              "displayName": "Id Proof",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Pan Card/Buisness Registration",
+              "displayName": "Pan Card/Buisness Registration",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        1024,
+        -656
+      ],
+      "id": "da5a9775-4cd5-42c0-b101-3cc11bfcbc5b",
+      "name": "Create a record1",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "L3m8E6biRnFAMknK",
+          "name": "Airtable Client Onboarding"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6e64a368-fd09-47ca-8127-3a7c71124114",
+              "leftValue": "={{ $json.fields['Id Proof'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "5dfc19be-f349-4db2-b6ea-3fd2882c5077",
+              "leftValue": "={{ $json.fields['Pan Card/Buisness Registration'] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1232,
+        -560
+      ],
+      "id": "9a554c01-4d38-4c94-b397-1760b16605ba",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $json.fields['Phone '] }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json['Name'] }}, 👋\n\nJust a quick reminder — we haven’t received your onboarding documents yet.\n\nTo move forward, please upload the required documents here:\n📎 https://forms.gle/YOUR_GOOGLE_FORM_ID\n\nCompleting this step will help us begin your service without delays.\n\nLet us know if you’re facing any issues. We're here to help! 😊\n\n— Team [Your Company Name]\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1472,
+        -496
+      ],
+      "id": "c831ba3b-9c74-4021-acf9-044c6df273a4",
+      "name": "HTTP Request7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.ultramsg.com/instance136197/messages/chat?token=poqudsu5vlmv5hv2&to=+917018641236&body=WhatsApp+API+on+UltraMsg.com+works+good&priority=10",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Content-Type\": \"application/x-www-form-urlencoded\"\n}\n",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "to",
+              "value": "={{ $('Create a record1').item.json.fields.Phone }}"
+            },
+            {
+              "name": "body",
+              "value": "=Hi {{ $json.fields.Name }}, 🙏\n\nThank you for submitting your documents — we’ve received them successfully! 📂✅\n\nOur team will now review everything and get back to you shortly with the next steps.\n\nIf you have any questions in the meantime, feel free to message us.\n\n— Team [Your Company Name]\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1472,
+        -672
+      ],
+      "id": "d75afa57-f0c3-478b-86af-a4051607c652",
+      "name": "HTTP Request8"
+    },
+    {
+      "parameters": {
+        "content": "Workflow I\nPhase I\nThree main entry points : 1-> Whatsapp text 2-> Google form/sheets 3-> Gmail ",
+        "height": 640,
+        "width": 816,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -704,
+        -480
+      ],
+      "typeVersion": 1,
+      "id": "81fb2adb-30ba-4498-9c2b-9587f98f66f5",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Phase II\nStore the extracted User details i.e name, email, contact... in \"Airtable\"",
+        "height": 256,
+        "width": 224
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        160,
+        -320
+      ],
+      "typeVersion": 1,
+      "id": "5752182d-a68f-4002-a151-dddd8618c02a",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Phase III.I\nSends Google Form to collect User relevant Documents",
+        "height": 256,
+        "width": 288,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        400,
+        -736
+      ],
+      "typeVersion": 1,
+      "id": "801241b4-3052-47b5-a4bb-9a8f15598a74",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "WorkFlow II\nPhase I\nTriggers when user fill the relevant documents using Google Forms Link ie. Workflow I, Phase III.I through Whatsapp message",
+        "height": 656,
+        "width": 1008,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        704,
+        -912
+      ],
+      "typeVersion": 1,
+      "id": "66653431-ef96-4b2e-95cb-5ed6462f56b8",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "Stores the submitted documents to the airtable ",
+        "height": 256,
+        "width": 160
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        992,
+        -752
+      ],
+      "typeVersion": 1,
+      "id": "1ff9c725-cb07-4a37-9cf0-eb1d8f453d8b",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "Condition if user uploaded the data\ntrue -> Send a thanksgiving message to upload documents\nfalse -> Send the form url again and ask user to upload documents again.",
+        "height": 432,
+        "width": 464
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1200,
+        -768
+      ],
+      "typeVersion": 1,
+      "id": "bbddd768-9eda-4b8b-abc0-7925e9f786db",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "Phase III.II\nMessage OpenAi to give [Client Score] on the base of their service reqeuired with [Scoring Reason]",
+        "height": 256,
+        "width": 448,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        480,
+        -112
+      ],
+      "typeVersion": 1,
+      "id": "aee254df-a78b-4943-a8b1-bd1a62e8593f",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "Phase IV\n\nSwitch1:\nRoutes items based on their score value to one of three outputs: \"In Progress\" (score ≥ 8), \"Follow-up Needed\" (score ≥ 5), or \"New\" (score ≥ 0).\n\nEdit Fields1:\nSets the field Client Status to \"In Progress\" for items from the first Switch1 output.\n\nEdit Fields4:\nSets the field Client Status to \"Follow-up Needed\" for items from the second Switch1 output.\n\nEdit Fields5:\nSets the field Client Status to \"New\" for items from the third Switch1 output.\n\nMerge1:\nCombines the outputs from the three Set nodes back into a single stream for further processing.",
+        "height": 880,
+        "width": 672
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1024,
+        -208
+      ],
+      "typeVersion": 1,
+      "id": "4dd35772-85cc-40e1-be64-aef4000fad0c",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "Phase V\nUpdate record:\nUpdates a client record in Airtable with the latest score, status, and reason.\n\nHTTP Request1:\nSends a WhatsApp message to the client using UltraMsg API, with personalized content.\n\nSend a message:\nSends a personalized thank-you email to the client using Gmail.\n\nGet a record:\nRetrieves the updated client record from Airtable for further use.",
+        "height": 448,
+        "width": 608
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1792,
+        -224
+      ],
+      "typeVersion": 1,
+      "id": "3f6941c2-1a95-42fa-b897-d601cd05d93c",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "content": "Phase VI\nSwitch:\nRoutes items based on Client Score to \"High Priority\" (≥8), \"Moderate Priority\" (≥5), or \"Low Priority\" (≥0).\n\nHTTP Request:\nSends a WhatsApp message for high-priority clients to the senior sales executive.\n\nHTTP Request2:\nSends a WhatsApp message for moderate-priority clients to the junior sales executive.\n\nHTTP Request3:\nSends a WhatsApp message for low-priority clients to the sales assistant.\n\nMerge2:\nCombines the outputs from all three HTTP Request nodes into a single stream.",
+        "height": 832,
+        "width": 688
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2496,
+        -208
+      ],
+      "typeVersion": 1,
+      "id": "611f8a56-b16b-4179-b672-5a09b4dee085",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "Phase VII\nHTTP Request4:\nCreates a Razorpay payment link for the client using their details and service information.\n\nUpdate record2:\nUpdates the Airtable client record with the generated Razorpay payment link ID.\n\nRazorpay payment:\nSends a WhatsApp message to the client with the payment link for onboarding completion.",
+        "height": 448,
+        "width": 720
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        3264,
+        -16
+      ],
+      "typeVersion": 1,
+      "id": "53d2d9d0-d772-4ff1-9bc6-2b950e26182e",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "Workflow III\n\nRazorpay Webhook:\nReceives payment update notifications from Razorpay.\n\nExtract Payment Info:\nExtracts key payment details (email, contact, status, payment link ID, name) from the webhook data.\n\nSearch records:\nSearches Airtable for the client record matching the received payment link ID.\n\nGet a record1:\nRetrieves the full client record from Airtable using the found record ID.\n\nUpdate record1:\nUpdates the Airtable client record with payment status, currency, amount paid, and marks status as \"Completed\".\n\nHTTP Request5:\nSends a WhatsApp confirmation message to the client after successful payment.",
+        "height": 544,
+        "width": 1008,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -736,
+        224
+      ],
+      "typeVersion": 1,
+      "id": "7d8d9207-1cda-4c5f-9282-8ede44f0797f",
+      "name": "Sticky Note11"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "HTTP Request6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a message": {
+      "main": [
+        [
+          {
+            "node": "Get a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a record": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp Trigger": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Update record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "HTTP Request3": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request4": {
+      "main": [
+        [
+          {
+            "node": "Update record2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Razorpay Webhook": {
+      "main": [
+        [
+          {
+            "node": "Extract Payment Info",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Payment Info": {
+      "main": [
+        [
+          {
+            "node": "Search records",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search records": {
+      "main": [
+        [
+          {
+            "node": "Get a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a record1": {
+      "main": [
+        [
+          {
+            "node": "Update record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record2": {
+      "main": [
+        [
+          {
+            "node": "Razorpay payment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Create a record1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Razorpay payment": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "323e942a-a128-4532-b4b4-9bce4e251606",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2dae0369014041f431d579c5012c46546dacb3a05dfa0ab646d51483d71f5ac9"
+  },
+  "id": "R828nrynYIVgwcaB",
+  "tags": []
+}
