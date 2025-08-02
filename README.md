@@ -79,7 +79,6 @@ It will trigger on form/email/WhatsApp submissions and process everything automa
 
 ---
 
-📸 Demo Preview (Optional)
 
 *Insert GIF or link to video demo here*
 
@@ -90,8 +89,7 @@ It will trigger on form/email/WhatsApp submissions and process everything automa
 Have questions or want to collaborate?
 
 Shubham Sharma  
-📬 LinkedIn: https://www.linkedin.com/in/yourprofile  
-🌐 Portfolio: https://yourwebsite.com (optional)
+📬 LinkedIn: https://www.linkedin.com/in/shubham-sharma-42544734a/ 
 
 ---
 
