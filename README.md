@@ -77,10 +77,6 @@ It will trigger on form/email/WhatsApp submissions and process everything automa
 - Freelancers managing project leads efficiently
 - Any business using WhatsApp, forms, and Razorpay for client management
 
----
-
-
-*Insert GIF or link to video demo here*
 
 ---
 
